@@ -18,18 +18,34 @@ export const useInputParamsSettings = (props) => {
   }
 }
 
+export const useSetAndClearSubmitted = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const setSubmittedStatus = property => {
+    setSubmitted(property)
+  };
+  return {
+    setAndClearSubmitted: {
+      setSubmittedStatus,
+      submitted
+    }
+  }
+}
+
 const InputComponent = (props) => {
 
   const { inputParamsSettings: { setInputText, inputParams }} = useInputParamsSettings(props);
+  const { setAndClearSubmitted: { setSubmittedStatus, submitted } } = useSetAndClearSubmitted();
 
   const setFormData = e => {
     setInputText({ [e.target.name]: e.target.value });
   }
 
-  const [submitted, setSubmitted] = useState(false);
+  const handleSubmitClick = () => {
+    setSubmittedStatus(true)
+  }
 
   const handleClearClick = () => {
-    setSubmitted(false);
+    setSubmittedStatus(false);
     setInputText({ userId: "", firstName: "", lastName: ""})
   }
 
@@ -50,7 +66,7 @@ const InputComponent = (props) => {
         </div>
       </div>
 
-      <button onClick={e => setSubmitted(true)}>Submit</button>
+      <button onClick={handleSubmitClick}>Submit</button>
       <button onClick={handleClearClick}>Clear</button>
 
       {submitted && <div className="formOutput">

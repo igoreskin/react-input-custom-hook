@@ -31,7 +31,6 @@ const InputComponent = (props) => {
   const handleClearClick = () => {
     setSubmitted(false);
     setInputText({ userId: "", firstName: "", lastName: ""})
-    console.log(inputParams)
   }
 
   return (
@@ -39,15 +38,15 @@ const InputComponent = (props) => {
       <div>
         <div>
           <label>User Id</label>
-          <input name="userId" type="text" onChange={setFormData} />
+          <input name="userId" type="text" value={inputParams.userId} onChange={setFormData} />
         </div>
         <div>
           <label>First Name</label>
-          <input name="firstName" type="text" onChange={setFormData} />
+          <input name="firstName" type="text" value={inputParams.firstName} onChange={setFormData} />
         </div>
         <div>
           <label>Last Name</label>
-          <input name="lastName" type="text" onChange={setFormData} />
+          <input name="lastName" type="text" value={inputParams.lastName} onChange={setFormData} />
         </div>
       </div>
 

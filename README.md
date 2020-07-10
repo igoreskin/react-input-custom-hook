@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+The intention of this example is to demonstrate how the functionality of a useState hook can be taken out from the inside of the 
+main function of a functional component (where it cannot be tested) and embedded into a custom hook, which can then be 
+exported for testing purposes. In InputComponent.js it has been done with the useState hook responsible for the input data as well as
+with another one responsible for whether or not the data has been submitted. Both custom hooks have been tested 
+in InputComponent.test.js file.
+
 ## Available Scripts
 
 In the project directory, you can run:
